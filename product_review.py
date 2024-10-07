@@ -11,6 +11,7 @@ keywords = ["good", "excellent", "bad", "poor", "average"]
 positive_words = ["good", "excellent", "great", "awesome", "fantastic", "superb", "amazing"]
 negative_words = ["bad", "poor", "terrible", "horrible", "awful", "disappointing", "subpar"]
 
+
 for review in reviews:
     for word in keywords:
         if word in review.lower():
@@ -20,13 +21,7 @@ for review in reviews:
             replace_word = word.upper()
             second_half = review[target + target_len:]
             new_review = first_half + replace_word + second_half
-            
             print("-" * 50)
-            # print(review)
-            # print(f"Word: {word.upper()}\nIndex: {target}\nLength: {target_len}")
-            # print(f"1st Half: {first_half}")
-            # print(f"Word: {replace_word}")
-            # print(f"2nd Half: {second_half}")
             print(new_review)
             print("-" * 50)
 
@@ -45,3 +40,13 @@ def sentiment_tally():
     print("-" * 50)
 
 sentiment_tally()
+
+print("Review Summary:")
+print("-" * 50)
+for review in reviews:
+    summary_count = 29
+    while review[summary_count] != " ":
+        summary_count += 1
+    if review[summary_count] == " ":
+        print(review[:summary_count] + "...")
+        print("-" * 50)
