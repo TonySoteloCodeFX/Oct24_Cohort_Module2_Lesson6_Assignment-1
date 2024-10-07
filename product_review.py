@@ -8,6 +8,9 @@ reviews = [
 
 keywords = ["good", "excellent", "bad", "poor", "average"]
 
+positive_words = ["good", "excellent", "great", "awesome", "fantastic", "superb", "amazing"]
+negative_words = ["bad", "poor", "terrible", "horrible", "awful", "disappointing", "subpar"]
+
 for review in reviews:
     for word in keywords:
         if word in review.lower():
@@ -26,5 +29,19 @@ for review in reviews:
             # print(f"2nd Half: {second_half}")
             print(new_review)
             print("-" * 50)
-            
 
+
+def sentiment_tally():
+    good_words = 0
+    bad_words = 0
+    for review in reviews:
+        for word in positive_words + negative_words:
+            if word in review.lower() and word in positive_words:
+                good_words += 1
+            elif word in review.lower() and word in negative_words:
+                bad_words += 1
+    print(f"Positive Word Count: {good_words}")
+    print(f"Negative Word Count: {bad_words}")
+    print("-" * 50)
+
+sentiment_tally()
